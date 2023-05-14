@@ -6,8 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  data = "Your perfect banking partner "
-  
+  // data = "Your perfect banking partner "
+  // uname: any;  
+
   constructor(){}
   ngOnInit(): void { }
   
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
   }
 
   unamechange(event:any ) {
-    console.log(event.target.value)
+    // console.log(event.target.value);  1st method
+    // this.uname=(event.target.value)  2nd method data binding
   }
 }
