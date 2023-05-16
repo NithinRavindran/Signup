@@ -17,27 +17,37 @@
 
 <body>
     <div class="container p-5">
-        <div class="row text-center pt-5">
-            <img src="/assets/images/" alt="">
-            <p class="text-white mt-3"></p>
-        </div>
-
         <div class="row">
-            <div class="col-lg-6 col-sm-6 col-xm-6  mt-3" style="margin-left:35%;">
-                <form action="">
-                    <div class="col-6">
-                        <input  id="uname" type="text" class="form-control mt-2 " placeholder="Email">
-                        <input  id="pass" type="password" class="form-control mt-4 " placeholder="Password">
-                        <button (click)="login(uname,psw)" type="button" class="form-control mt-5 bg-dark text-white">Log In</button>
+            <div class="data col-6">
+                <form [formGroup]="loginForm" class="">
+                    <div class="col-lg-6 col-sm-12 col-xm-12 p-2 pt-5">
+                        <input formControlName="acno"  id="acno" name="acno" type="text" class="form-control mt-2"
+                            placeholder="Account No">
+                    </div>
+
+                    <div *ngIf="(this.loginForm.get('acno')?.errors)&&(this.loginForm.get('acno')?.touched)">
+                        <p class="text-danger ps-4">Must Contain Number only</p>
+                    </div>
+
+                    <div class="col-lg-6 col-sm-12 col-xm-12 p-2">
+                        <input formControlName="psw"  id="pass" name="psw" type="password" class="form-control mt-4"
+                            placeholder="Password">
+                    </div>
+                    <div *ngIf="(this.loginForm.get('uname')?.errors)&&(this.loginForm.get('uname')?.touched)">
+                        <p class="text-danger ps-4">Enter the correct password</p>
+                    </div>
+                    <div class="col-lg-6 col-sm-12 col-xm-12 p-2">
+                        <button (click)="login()" type="button" class="form-control mt-5 text-white"
+                            style="background: transparent;">Log In</button>
                     </div>
                 </form>
-            </div>~
-        </div> 
-        <div class="row mt-3" style="margin-left: 35%;">
-                <p>Don't have an account <span class="ms-3"><a href="">Sign up for free</a></span></p>
+            </div>
+            <div class=" col-6">
+                <h3 >Create Account</h3>
+                <p>Don't have an account <a routerLink="signup">Sign up for free</a></p>
+            </div>
         </div>
     </div>
 </body>
-<script src="./login.js"></script>
 
 </html>
